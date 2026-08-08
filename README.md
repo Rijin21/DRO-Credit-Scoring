@@ -74,3 +74,6 @@ To elevate this pipeline to a research-grade suite, three advanced observability
 
 ### Robustness Tax — Pareto Frontier
 ![Robustness Tax](robustness_tax_pareto.png)
+
+## 🔗 Live Demo
+   👉 **[Try the live app here](https://dro-credit-scoring-ssefldax3cqmtmqhdjfkxa.streamlit.app)**
