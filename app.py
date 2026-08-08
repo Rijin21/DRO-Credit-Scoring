@@ -174,18 +174,11 @@ st.subheader("🔍 Why did the model make this prediction? (SHAP)")
 
 with st.spinner("Calculating SHAP values..."):
     explainer = shap.TreeExplainer(selected_model)
-    shap_values = explainer.shap_values(input_df)
+    # Modern SHAP API returns an Explanation object directly
+    explanation = explainer(input_df)
 
     fig, ax = plt.subplots(figsize=(10, 4))
-    shap.waterfall_plot(
-        shap.Explanation(
-            values=shap_values[0],
-            base_values=explainer.expected_value,
-            data=input_df.iloc[0],
-            feature_names=feature_names
-        ),
-        show=False
-    )
+    shap.plots.waterfall(explanation[0], show=False)
     st.pyplot(fig)
     plt.close()
 
