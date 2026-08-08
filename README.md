@@ -64,3 +64,13 @@ To elevate this pipeline to a research-grade suite, three advanced observability
 
 
 [image1]: <data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAZCAYAAADe1WXtAAAAq0lEQVR4XmNgGAWjYGCBsrKyrLy8fLeCggIHuhzZQElJiR9o6GYg1kSXowjIycmVgzC6OMVAUVHRTEZGRgVdHA5ERUV5gN6RJBUDXfsISCcBDedEN5MBGOgVIAWkYqCB/4H4FVB/PLqZZAFxcXFuoIF9WF1JJmABGjgVSDOiS5ALWIDeXQjEHugSZAOgd6WBrtwsJSUlgi5HNjA2NmYFGizEQEWvj4JRQAAAAF1pKp6Jr3nrAAAAAElFTkSuQmCC>
+
+## 📈 Results Visualization
+
+### SHAP Feature Attribution (Baseline vs DRO)
+| Baseline ERM | DRO Model |
+|---|---|
+| ![Baseline SHAP](shap_baseline.png) | ![DRO SHAP](shap_dro.png) |
+
+### Robustness Tax — Pareto Frontier
+![Robustness Tax](robustness_tax_pareto.png)
