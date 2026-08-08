@@ -1,9 +1,8 @@
-folktables==0.0.12
-xgboost==2.1.4
-scikit-learn==1.6.1
-pandas==2.0.3
-numpy==1.26.4
-shap==0.49.1
-matplotlib==3.5.2
+folktables
+xgboost
+scikit-learn
+pandas
+numpy
+shap
 streamlit
 matplotlib
