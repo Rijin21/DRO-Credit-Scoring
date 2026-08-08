@@ -46,18 +46,18 @@ def train_and_evaluate_baseline(df):
     )
     
     # 2. Train Standard Model (Minimizes Average Loss)
-    model = xgb.XGBRegressor(
-        n_estimators=100, 
-        max_depth=5, 
-        learning_rate=0.1, 
-        random_state=42,
-        n_jobs=-1
-    )
+    model = xgb.XGBClassifier(
+    n_estimators=100,
+    max_depth=5,
+    learning_rate=0.1,
+    random_state=42,
+    n_jobs=-1,
+    eval_metric='logloss')
+    
     model.fit(X_train, y_train)
     
     # 3. Evaluate Global (Average) Accuracy
-    # Note: XGBoost Regressor outputs probabilities, so we round to 0 or 1 for classification
-    test_preds = np.round(model.predict(X_test))
+    test_preds = model.predict(X_test)    
     global_acc = accuracy_score(y_test, test_preds)
     
     print("\n=======================================================")
