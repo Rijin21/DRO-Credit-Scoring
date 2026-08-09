@@ -62,3 +62,20 @@ def test_api_prediction():
     assert body["prediction_label"] in [0, 1]
     assert 0.0 <= body["confidence"] <= 1.0
     assert body["model"] == "dro_robust"
+    
+# ── Test 7: Drift Monitor ────────────────────────────────────────────────────
+def test_drift_monitor_detects_shift():
+    """PSI should be ~0 for identical data and large for shifted data."""
+    import numpy as np
+    from drift_monitor import calculate_psi
+
+    rng = np.random.default_rng(42)
+    baseline = rng.normal(0, 1, 1000)
+
+    # Identical distribution -> PSI near zero
+    identical = rng.normal(0, 1, 1000)
+    assert calculate_psi(baseline, identical) < 0.1
+
+    # Heavily shifted distribution -> PSI should be large
+    shifted = rng.normal(5, 1, 1000)
+    assert calculate_psi(baseline, shifted) > 0.25
