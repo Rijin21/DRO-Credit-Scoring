@@ -44,3 +44,21 @@ def test_ood_accuracy_above_chance():
     dro_ood_accuracy = 0.7330
     random_chance = 0.5
     assert dro_ood_accuracy > random_chance + 0.15, "DRO must beat random chance by at least 15%"
+    
+# ── Test 6: API Prediction Endpoint ──────────────────────────────────────────
+def test_api_prediction():
+    """Check that the FastAPI prediction endpoint returns a valid response."""
+    from fastapi.testclient import TestClient
+    from api import app
+    client = TestClient(app)
+
+    sample_profile = {
+        "AGEP": 35, "COW": 1, "SCHL": 21, "MAR": 1, "OCCP": 1000,
+        "POBP": 6, "RELP": 0, "WKHP": 40, "SEX": 1, "RAC1P": 1
+    }
+    response = client.post("/predict/dro", json=sample_profile)
+    assert response.status_code == 200
+    body = response.json()
+    assert body["prediction_label"] in [0, 1]
+    assert 0.0 <= body["confidence"] <= 1.0
+    assert body["model"] == "dro_robust"

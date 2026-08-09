@@ -6,3 +6,6 @@ numpy
 shap
 streamlit
 matplotlib
+fastapi
+uvicorn
+httpx
