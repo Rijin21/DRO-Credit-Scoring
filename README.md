@@ -1,5 +1,7 @@
 # **Distributionally Robust Optimization (DRO) Engine**
 
+![CI](https://github.com/Rijin21/DRO-Credit-Scoring/actions/workflows/ci.yml/badge.svg)
+
 An advanced Machine Learning pipeline demonstrating how **Distributionally Robust Optimization (DRO)** and **Minimax Optimization** can prevent algorithmic bias and protect models from catastrophic Out-of-Distribution (OOD) domain shifts.
 
 ## **🚀 The Business Problem**
