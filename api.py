@@ -39,8 +39,7 @@ class PredictionResponse(BaseModel):
 
 # ── Helper ────────────────────────────────────────────────────────────────────
 def make_prediction(model, profile: ApplicantProfile):
-    input_df = pd.DataFrame([profile.dict()])[feature_names]
-    label = int(model.predict(input_df)[0])
+    input_df = pd.DataFrame([profile.model_dump()])[feature_names]    label = int(model.predict(input_df)[0])
     proba = model.predict_proba(input_df)[0]
     confidence = float(proba[1] if label == 1 else proba[0])
     return {
